@@ -1,14 +1,15 @@
+import os
 from telegram.ext import Updater, CommandHandler
 from telegram.ext import CallbackContext, MessageHandler, Filters
 from weather_json import get_weather, geo_weather, get_weather_5, geo_weather_5
 import os
-#import telegram
+import telegram
 #from telegram import Update
 from dotenv import load_dotenv
-
 load_dotenv()
 
-TOKEN = os.getenv('TOKEN')
+APP_TOKEN = os.getenv('APP_TOKEN')
+#APP_TOKEN='' paste from dockerfile
 
 def start_handler(update, context):
     chat_id = update.effective_chat.id
@@ -39,7 +40,6 @@ def geo_handler(update, context):
 def geo_text_handler_5(update, context):
     context.bot.send_message(chat_id=update.message.chat_id, text="Send your location.")
 
-
 def geo_handler_5(update, context):
     lat = update.message.location.latitude
     lon = update.message.location.longitude
@@ -65,7 +65,8 @@ def temperature_handler_5(update, context):
     update.message.reply_text("".join(result_5))
 
 def main():
-    updater = Updater(TOKEN, use_context=True)
+
+    updater = Updater(APP_TOKEN ,use_context=True)
     updater.dispatcher.add_handler(CommandHandler("start", start_handler))
     updater.dispatcher.add_handler(CommandHandler("help", help_handler))
     updater.dispatcher.add_handler(CommandHandler("temp", temperature_handler))
@@ -76,7 +77,6 @@ def main():
     updater.dispatcher.add_handler(MessageHandler(Filters.location, geo_handler_5))
     updater.start_polling()
     updater.idle()
-
 
 if __name__ == '__main__':
     main()

@@ -6,11 +6,11 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 load_dotenv()
-api_key = os.getenv('openweather')
+API_KEY= os.getenv('APP_WEATHER_KEY')
 
 
 def get_weather(loc):
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid={}'.format(loc, api_key)
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid={}'.format(loc, API_KEY)
     data = requests.get(url)
     response = json.loads(data.content.decode('utf8'))
     city = response['name']
@@ -25,7 +25,7 @@ def get_weather(loc):
 
 
 def geo_weather(lon, lat):
-    url = 'http://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&units=metric&appid={}'.format(lat, lon, api_key)
+    url = 'http://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&units=metric&appid={}'.format(lat, lon, API_KEY)
     data = requests.get(url)
     response = json.loads(data.content.decode('utf8'))
     city = response['name']
@@ -40,7 +40,7 @@ def geo_weather(lon, lat):
 
 
 def get_weather_5(loc):
-    url = 'http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&cnt=5&appid={}'.format(loc, api_key)
+    url = 'http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&cnt=5&appid={}'.format(loc, API_KEY)
     data = requests.get(url)
     response = json.loads(data.content.decode('utf8'))
     # json request has {keys:values} pairs, data separation
@@ -65,7 +65,7 @@ def get_weather_5(loc):
 
 def geo_weather_5(lon, lat):
     url = 'http://api.openweathermap.org/data/2.5/forecast?lat={}&lon={}&units=metric&cnt=5&appid={}'.format(lat, lon,
-                                                                                                             api_key)
+                                                                                                             API_KEY)
     data = requests.get(url)
     response = json.loads(data.content.decode('utf8'))
     # json request has {keys:values} pairs, data separation
