@@ -1,8 +1,8 @@
 # base image
 FROM python:3.8-slim-buster
 #ARG telegram_bot_token
-ARG token
-ARG api_key
+#ARG token
+#ARG api_key
 ENV APP_TOKEN=$token
 ENV APP_WEATHER_KEY=$api_key
 
@@ -26,7 +26,7 @@ COPY requirements.txt requirements.txt
 #RUN venv/bin/pip install --no-cache-dir -r ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 #copy files required for the app run
-COPY models.py weather.py weather_json.py ./
+COPY .env models.py weather.py weather_json.py ./
 
 #the port number the container should expose
 EXPOSE 80
