@@ -8,16 +8,13 @@ import telegram
 from dotenv import load_dotenv
 load_dotenv()
 
-APP_TOKEN = os.getenv('APP_TOKEN')
-#APP_TOKEN='' paste from dockerfile
-
-def start_handler(update, context):
+def start_handler(update:Updater, context:CallbackContext):
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text='Hello!')
     update.message.reply_text("Type /help for instructions.")
 
 
-def help_handler(update, context: CallbackContext):
+def help_handler(update:Updater, context: CallbackContext):
     update.message.reply_text(
         "Write /temp city_name, city_name is a city where you want to know daily weather forecast."
         "\nFor example, \n\t\t/temp Berlin\n\t\t/temp Kiev. \n/geo \n"
@@ -29,13 +26,11 @@ def help_handler(update, context: CallbackContext):
 def geo_text_handler(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Send your location.")
 
-
 def geo_handler(update, context):
     lat = update.message.location.latitude
     lon = update.message.location.longitude
     result = geo_weather(lon, lat)
     context.bot.send_message(chat_id=update.effective_chat.id, text=result)
-
 
 def geo_text_handler_5(update, context):
     context.bot.send_message(chat_id=update.message.chat_id, text="Send your location.")
@@ -65,7 +60,7 @@ def temperature_handler_5(update, context):
     update.message.reply_text("".join(result_5))
 
 def main():
-
+    APP_TOKEN = os.getenv('APP_TOKEN')
     updater = Updater(APP_TOKEN ,use_context=True)
     updater.dispatcher.add_handler(CommandHandler("start", start_handler))
     updater.dispatcher.add_handler(CommandHandler("help", help_handler))
