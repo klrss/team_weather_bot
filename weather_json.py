@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 <<<<<<< HEAD
+<<<<<<< HEAD
 API_KEY = os.getenv('APP_WEATHER_KEY')
 
 
@@ -28,6 +29,8 @@ def get_weather(loc):
         pass
 
 =======
+=======
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 API_KEY= os.getenv('APP_WEATHER_KEY')
 
 
@@ -64,6 +67,7 @@ def geo_weather(lon, lat):
 
 def get_weather_5(loc):
 <<<<<<< HEAD
+<<<<<<< HEAD
     try:
         url = 'http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&cnt=5&appid={}'.format(loc, API_KEY)
         data = requests.get(url)
@@ -89,6 +93,8 @@ def get_weather_5(loc):
         pass
 
 =======
+=======
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
     url = 'http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&cnt=5&appid={}'.format(loc, API_KEY)
     data = requests.get(url)
     response = json.loads(data.content.decode('utf8'))

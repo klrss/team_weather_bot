@@ -5,12 +5,16 @@ from weather_json import get_weather, geo_weather, get_weather_5
 import os
 import telegram
 <<<<<<< HEAD
+<<<<<<< HEAD
 import logging
 =======
+=======
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 #from telegram import Update
 >>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 from dotenv import load_dotenv
 load_dotenv()
+<<<<<<< HEAD
 <<<<<<< HEAD
 #logging
 logging.basicConfig(
@@ -23,13 +27,21 @@ def start_handler(update, context):
 
 def start_handler(update:Updater, context:CallbackContext):
 >>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
+=======
+
+def start_handler(update:Updater, context:CallbackContext):
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text='Hello!')
     update.message.reply_text("Type /help for instructions.")
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def help_handler(update, context):
+=======
+def help_handler(update:Updater, context: CallbackContext):
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 =======
 def help_handler(update:Updater, context: CallbackContext):
 >>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
@@ -50,7 +62,10 @@ def geo_handler(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=result)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 def geo_text_handler_5(update, context):
     context.bot.send_message(chat_id=update.message.chat_id, text="Send your location.")
 
@@ -82,7 +97,11 @@ def temperature_handler_5(update, context):
 def main():
     APP_TOKEN = os.getenv('APP_TOKEN')
 <<<<<<< HEAD
+<<<<<<< HEAD
     updater = Updater(APP_TOKEN, use_context=True)
+=======
+    updater = Updater(APP_TOKEN ,use_context=True)
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 =======
     updater = Updater(APP_TOKEN ,use_context=True)
 >>>>>>> 460c441d36fe8523fee39d3094e219a19444f074

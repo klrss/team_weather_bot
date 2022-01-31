@@ -27,7 +27,11 @@ COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 #copy files required for the app run
 <<<<<<< HEAD
+<<<<<<< HEAD
 COPY weather.py weather_json.py ./
+=======
+COPY models.py weather.py weather_json.py ./
+>>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 =======
 COPY models.py weather.py weather_json.py ./
 >>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
