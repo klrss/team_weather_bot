@@ -16,6 +16,7 @@ ENV APP_DATABASE_URL=&db_url
 
 RUN env | grep "APP_TOKEN"
 RUN env | grep "APP_WEATHER_KEY"
+RUN env | grep "APP_DATABASE_URL"
 #workdir
 WORKDIR /weather_bot
 
