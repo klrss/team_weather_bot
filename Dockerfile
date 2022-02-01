@@ -23,20 +23,12 @@ RUN pip install --upgrade pip
 #install python modules needed by the app
 COPY requirements.txt requirements.txt
 #RUN python -m venv venv
-#RUN venv/bin/pip install --no-cache-dir -r ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 #copy files required for the app run
-<<<<<<< HEAD
-<<<<<<< HEAD
 COPY weather.py weather_json.py ./
-=======
-COPY models.py weather.py weather_json.py ./
->>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
-=======
-COPY models.py weather.py weather_json.py ./
->>>>>>> 460c441d36fe8523fee39d3094e219a19444f074
 
 #the port number the container should expose
 EXPOSE 80
 #run the application
 CMD ["python", "weather.py"]
+
