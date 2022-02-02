@@ -1,11 +1,11 @@
 # base image
 FROM python:3.8-slim-buster
 #ARG telegram_bot_token
-ARG token
-ARG api_key
+ARG app_token
+ARG app_weather_key
 
-ENV APP_TOKEN=$token
-ENV APP_WEATHER_KEY=$api_key
+ENV APP_TOKEN=$app_token
+ENV APP_WEATHER_KEY=$app_weather_key
 
 #docker build --build-arg token='yyyy' --build-arg api_key='yyyy' -t weather:v2 .
 
