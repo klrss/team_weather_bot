@@ -6,12 +6,12 @@ aws_account         = "064173783062"
 aws_region          = "eu-central-1"
 image_tag           = "0.0.1"
 app_count           = 2
-github_path_url     = "https://github.com/Yagorus/Demo4_Bot"
+github_path_url     = "https://github.com/Yagorus/team_weather_bot"
 git_trigger        = "PUSH"
 git_pattern_branch  = "^refs/heads/terragrunt$"
 buildspec_path      = "providers/dev"
 buildspec_file      = "buildspec.yml"
-working_dir         =  "../../app-test"
+working_dir         =  "../../bot"
 }
 
 inputs = {
