@@ -10,6 +10,8 @@ REPO_NAME = $(REGISTRY_ID).dkr.ecr.$(REPOSITORY_REGION).amazonaws.com/${APP_NAME
 
 .PHONY: build
 build:
+	echo "APP_TOKEN - $(APP_TOKEN)"
+	echo "APP_WEATHER_KEY - $(APP_WEATHER_KEY)"
 	aws ecr get-login-password --region $(REPOSITORY_REGION) | docker login --username AWS --password-stdin $(REGISTRY_ID).dkr.ecr.$(REPOSITORY_REGION).amazonaws.com
 	
 	docker build --build-arg token=$(APP_TOKEN) --build-arg api_key=$(APP_WEATHER_KEY) -t $(REPO_NAME):$(TAG) -f ./Dockerfile .
