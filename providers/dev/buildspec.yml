@@ -22,7 +22,7 @@ phases:
   build:
     commands:
       - env
-      - cd "${CODEBUILD_SRC_DIR}/app-test"
+      - cd "${CODEBUILD_SRC_DIR}/bot"
       - export TAG="${CODEBUILD_BUILD_NUMBER}-${ENV}"
       - make build
 
