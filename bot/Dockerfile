@@ -1,11 +1,10 @@
 # base image
 FROM python:3.8-slim-buster
 #ARG telegram_bot_token
-ARG app_token
-ARG app_weather_key
-
-ENV APP_TOKEN=$app_token
-ENV APP_WEATHER_KEY=$app_weather_key
+ARG token
+ARG api_key
+ENV APP_TOKEN=$token
+ENV APP_WEATHER_KEY=$api_key
 
 #docker build --build-arg token='yyyy' --build-arg api_key='yyyy' -t weather:v2 .
 
@@ -26,7 +25,7 @@ COPY requirements.txt requirements.txt
 #RUN python -m venv venv
 RUN pip install --no-cache-dir -r requirements.txt
 #copy files required for the app run
-COPY . /bot
+COPY weather.py weather_json.py ./
 
 #the port number the container should expose
 EXPOSE 80
