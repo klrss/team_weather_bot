@@ -3,6 +3,7 @@ FROM python:3.8-slim-buster
 #ARG telegram_bot_token
 ARG token
 ARG api_key
+
 ENV APP_TOKEN=$token
 ENV APP_WEATHER_KEY=$api_key
 
