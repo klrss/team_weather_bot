@@ -70,7 +70,7 @@ def temperature_handler_5(update, context):
 def main():
     APP_TOKEN = os.getenv('APP_TOKEN')
     updater = Updater(APP_TOKEN ,use_context=True)
-    updater.dispatcher.add_handler(CommandHandler("begin", start_handler))
+    updater.dispatcher.add_handler(CommandHandler("start", start_handler))
     updater.dispatcher.add_handler(CommandHandler("help", help_handler))
     updater.dispatcher.add_handler(CommandHandler("weather", temperature_handler))
     updater.dispatcher.add_handler(CommandHandler("weather5", temperature_handler_5))
