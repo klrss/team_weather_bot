@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 def start_handler(update:Updater, context:CallbackContext):
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text='Hello!')
-    update.message.reply_text("Type /help for instructions.")
+    update.message.reply_text("Type /help for instructions Yegor was here.")
 
 
 def help_handler(update:Updater, context: CallbackContext):
