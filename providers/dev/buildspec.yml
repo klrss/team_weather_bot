@@ -1,0 +1,33 @@
+version: 0.2
+
+env:
+  variables:
+    CI: "true"
+    REPOSITORY_REGION: "eu-central-1"
+    ENV: "dev"
+    APP_NAME: "bot"
+    NAME_CONTAINER: "main"
+    TERRAFORM_VERSION: "1.1.4"
+    TERRAGRUNT_VERSION: "0.36.1"
+
+phases:
+  pre_build:
+    commands:
+      - ls -la
+      - curl -sSL "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" -o terraform.zip
+      - unzip terraform.zip -d /usr/local/bin && chmod +x /usr/local/bin/terraform
+      - curl -sSL https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 -o terragrunt
+      - mv terragrunt /usr/local/bin/ && chmod +x /usr/local/bin/terragrunt
+
+  build:
+    commands:
+      - env
+      - cd "${CODEBUILD_SRC_DIR}/app-test"
+      - export TAG="${CODEBUILD_BUILD_NUMBER}-${ENV}"
+      - make build
+
+  post_build:
+    commands:
+      - cd "${CODEBUILD_SRC_DIR}/providers/dev/cluster"
+      - terragrunt plan -var="image_tag=${TAG}" 
+      - terragrunt apply -var="image_tag=${TAG}" -auto-approve
