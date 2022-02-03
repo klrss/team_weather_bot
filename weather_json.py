@@ -3,7 +3,6 @@ import json
 import os
 import math
 from datetime import datetime, timedelta
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,8 +22,8 @@ def get_weather(loc):
         day = datetime.today().strftime('%a (%m-%d)')
         msg = '{}. Daily weather forecast in {}, {}: {}°C, feels like {}°C, {}.'.format(day, city, country, temp,
                                                                                         feels_like, "".join(main))
-    except:
-        pass
+    finally:
+        return msg
 
 def get_weather_5(loc):
     url = 'http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&cnt=5&appid={}'.format(loc, API_KEY)
