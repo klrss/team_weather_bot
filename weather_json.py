@@ -24,7 +24,6 @@ def get_weather(loc):
                                                                                         feels_like, "".join(main))
     except:
         pass
-        #msg ='Check a city name. It can be in English or in Ukrainian'
     return msg
 
 
@@ -67,7 +66,6 @@ def get_weather_5(loc):
         msgg = '{},{}. 5 Day Weather Forecast: '.format(cityn, country)
     except:
         pass
-        #msgg = 'Check a city name. It can be in English or in Ukrainian'
     return msgg + "\n" + "\n".join([msg[i] for i in range(0, len(msg))])
 
 
