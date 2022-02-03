@@ -48,29 +48,13 @@ resource "aws_iam_role_policy_attachment" "ec2_full_access" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
 
-
-
-resource "aws_iam_role_policy" "role_policy_ssm" {
+resource "aws_iam_role_policy_attachment" "ssm_read_only" {
   role = aws_iam_role.codebuild_role.name
-  name = "${var.app_name}-${var.environment}-codebuild-policy"
-
-  policy = <<POLICY
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:Describe*",
-                "ssm:Get*",
-                "ssm:List*"
-            ],
-            "Resource": "*"
-        }
-    ]
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
 }
-POLICY
-  }
+
+
+
 
 # https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAM.ServiceLinkedRoles.html
 # Also add policy to read all resources - codebuild need to read instance profile
