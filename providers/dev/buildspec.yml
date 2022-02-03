@@ -23,8 +23,8 @@ phases:
     commands:
       - env
       - cd "${CODEBUILD_SRC_DIR}/bot"
-      - export APP_TOKEN=$(aws ssm get-parameter --name "BOT_TOKEN")
-      - export APP_WEATHER_KEY=$(aws ssm get-parameter --name "API_KEY")
+      - export APP_TOKEN=$(aws ssm get-parameter --name "BOT_TOKEN" --output text| awk '{print $7}')
+      - export APP_WEATHER_KEY=$(aws ssm get-parameter --name "API_KEY" --output text| awk '{print $7}')
       - export TAG="${CODEBUILD_BUILD_NUMBER}-${ENV}"
       - make build
 
