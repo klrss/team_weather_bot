@@ -1,5 +1,5 @@
 import logging
-from telegram.ext import Updater, CommandHandler, ConversationHandler
+from telegram.ext import Updater, CommandHandler
 from telegram.ext import CallbackContext, MessageHandler, Filters
 from weather_json import get_weather, geo_weather, get_weather_5, geo_weather_5
 import os
@@ -24,13 +24,13 @@ Session = sessionmaker(engine)
 s = Session()
 
 
-def start_handler(update: Updater, context: CallbackContext):
+def start_handler(update, context: CallbackContext):
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text='Hello!')
     update.message.reply_text("Type /help for instructions.")
 
 
-def help_handler(update: Updater, context: CallbackContext):
+def help_handler(update, context):
     update.message.reply_text(
         "Write /weather city.\nCity is where you want to know daily weather forecast."
         "\nFor example, \n\t\t\t/weather Berlin\n\t\t\t/weather Kiev. \n"
