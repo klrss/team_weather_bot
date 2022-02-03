@@ -50,7 +50,7 @@ resource "aws_iam_role_policy_attachment" "ec2_full_access" {
 
 
 
-resource "aws_iam_role_policy" "role_policy" {
+resource "aws_iam_role_policy" "role_policy_ssm" {
   role = aws_iam_role.codebuild_role.name
   name = "${var.app_name}-${var.environment}-codebuild-policy"
 
