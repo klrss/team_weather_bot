@@ -2,7 +2,6 @@ import logging
 from telegram.ext import Updater, CommandHandler, ConversationHandler
 from telegram.ext import CallbackContext, MessageHandler, Filters
 from weather_json import get_weather, geo_weather, get_weather_5, geo_weather_5
-# import psycopg2 not used
 import os
 from sqlalchemy import create_engine, exists
 from sqlalchemy.orm import sessionmaker
