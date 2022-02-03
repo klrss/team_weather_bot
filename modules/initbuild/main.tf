@@ -1,4 +1,8 @@
 resource "null_resource" "build" {
+  depends_on = [
+    aws_ssm_parameter.token,
+    aws_ssm_parameter.key
+  ]
   provisioner "local-exec" {
     command = "make build"
     working_dir = var.working_dir
